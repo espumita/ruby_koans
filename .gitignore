@@ -4,5 +4,6 @@ dist
 .rvmrc
 .ruby-version
 *.rbc
-koans/*
+src/*
 *~
+.idea/
