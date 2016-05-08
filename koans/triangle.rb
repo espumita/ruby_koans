@@ -14,6 +14,9 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  raise TriangleError, "length inappropriate" if [a, b, c].min <= 0
+  x, y, z = [a, b, c].sort
+  raise TriangleError, "impossible triangle" if x + y <= z
   if a == b and b == c
     return :equilateral
   end
