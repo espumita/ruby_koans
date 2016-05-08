@@ -30,6 +30,25 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # Your goal is to write the score method.
 
 def score(dice)
+  score = 0
+  (1..6).each do |number|
+    number_of_occurrences = dice.select { |n| n == number }.size
+    while number_of_occurrences > 0
+      if number_of_occurrences >= 3
+        score += (number == 1) ? 1000 : 100 * number
+        number_of_occurrences -= 3
+      elsif number == 5
+        score += number_of_occurrences * 50
+        number_of_occurrences = 0
+      elsif number == 1
+        score += number_of_occurrences * 100
+        number_of_occurrences = 0
+      else
+        number_of_occurrences = 0
+      end
+    end
+  end
+  score
   # You need to write this method
 end
 
